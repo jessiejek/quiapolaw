@@ -53,6 +53,8 @@
   .hero-title em { font-style: italic; color: var(--orange); }
   .hero-title strong { font-weight: 700; display: block; }
   .hero-desc { font-size: 0.92rem; font-weight: 400; line-height: 1.8; color: var(--gray); max-width: 440px; margin-bottom: 44px; }
+  .hero-services { display: flex; flex-wrap: wrap; gap: 10px; max-width: 500px; margin: -18px 0 30px; }
+  .hero-service-chip { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: rgba(27,42,74,0.06); border: 1px solid rgba(27,42,74,0.08); padding: 8px 12px; border-radius: 999px; }
   .hero-actions { display: flex; gap: 16px; align-items: center; }
   .btn-primary { background: var(--orange); color: white; padding: 16px 36px; text-decoration: none; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; display: inline-block; }
   .btn-primary:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(217,66,19,0.25); }
@@ -152,6 +154,8 @@
   .contact-item-icon svg { width: 20px; height: 20px; fill: var(--orange); }
   .contact-item-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
   .contact-item-value { font-size: 0.88rem; color: white; line-height: 1.5; }
+  .contact-item-value a { color: white; text-decoration: none; }
+  .contact-item-value a:hover { color: #F4A97E; }
   .contact-form { background: rgba(255,255,255,0.05); padding: 48px 44px; }
   .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: white; margin-bottom: 32px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -164,6 +168,7 @@
   .form-group textarea { resize: vertical; min-height: 110px; }
   .form-submit { width: 100%; background: var(--orange); border: none; color: white; padding: 16px; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
   .form-submit:hover { background: #BF3810; }
+  .form-status { min-height: 1.1em; margin-top: 12px; font-size: 0.78rem; color: rgba(255,255,255,0.65); }
 
   /* ─── FOOTER ─── */
   footer { background: #0F1A30; padding: 60px 7vw 40px; }
@@ -369,8 +374,13 @@
       <strong>With Integrity</strong>
     </h1>
     <p class="hero-desc">
-      Quiapo Law is a trusted Philippine law firm dedicated to protecting your rights, advancing your interests, and delivering results—with honesty and competence at every step.
+      Quiapo Law is a law office and notary public dedicated to litigation, consultation, and retainer services with honesty and competence at every step.
     </p>
+    <div class="hero-services reveal reveal-delay-1">
+      <span class="hero-service-chip">Litigation</span>
+      <span class="hero-service-chip">Consultation</span>
+      <span class="hero-service-chip">Retainer</span>
+    </div>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Schedule a Consultation</a>
       <a href="#practice" class="btn-secondary">Our Practice Areas</a>
@@ -406,7 +416,7 @@
       </svg>
     </div>
     <div class="hero-right-content">
-      <span class="hero-badge">Minglanilla, Cebu, Philippines</span>
+      <span class="hero-badge">Law Office &amp; Notary Public</span>
       <blockquote class="hero-quote">
         "The law is not a <em>maze</em>—<br>it is a path. We help<br>you walk it with confidence."
       </blockquote>
@@ -626,7 +636,7 @@
     <div class="section-eyebrow reveal">Get In Touch</div>
     <h2 class="section-title reveal reveal-delay-1">Let's Discuss <strong>Your Case</strong></h2>
     <p class="contact-desc reveal reveal-delay-2">
-      Your first consultation is free. Reach out today and let us help you understand your legal options—no obligation, no pressure.
+      Reach out today and let us help you with litigation, consultation, retainer, and notary public services.
     </p>
     <div class="contact-info">
       <div class="contact-item reveal">
@@ -635,7 +645,7 @@
         </div>
         <div>
           <div class="contact-item-label">Office Address</div>
-          <div class="contact-item-value">18 De Julio St. Tulay<br>Minglanilla, Cebu 6046</div>
+          <div class="contact-item-value">18 Julio St., Tulay<br>Minglanilla, Cebu</div>
         </div>
       </div>
       <div class="contact-item reveal reveal-delay-1">
@@ -644,7 +654,7 @@
         </div>
         <div>
           <div class="contact-item-label">Phone / Viber</div>
-          <div class="contact-item-value">+63 (2) 8XXX-XXXX<br>+63 917 XXX XXXX</div>
+          <div class="contact-item-value"><a href="tel:+639666610923">0966-661-0923</a><br><a href="tel:+639691130000">0969-113-0000</a></div>
         </div>
       </div>
       <div class="contact-item reveal reveal-delay-2">
@@ -653,43 +663,43 @@
         </div>
         <div>
           <div class="contact-item-label">Email</div>
-          <div class="contact-item-value">consult@quiapolaw.com</div>
+          <div class="contact-item-value"><a href="mailto:consult@quiapolaw.com">consult@quiapolaw.com</a></div>
         </div>
       </div>
       <div class="contact-item reveal reveal-delay-3">
         <div class="contact-item-icon">
-          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M17 1.33c-2.76 0-5 2.24-5 5V9H9v4h3v10h4V13h3.03l.97-4H16V6.33c0-.55.45-1 1-1H20V1.33h-3z"/></svg>
         </div>
         <div>
-          <div class="contact-item-label">Office Hours</div>
-          <div class="contact-item-value">Mon–Fri: 8:00 AM – 6:00 PM<br>Sat: 9:00 AM – 1:00 PM</div>
+          <div class="contact-item-label">Facebook</div>
+          <div class="contact-item-value"><a href="https://www.facebook.com/atty.jnq" target="_blank" rel="noopener noreferrer">facebook.com/atty.jnq</a></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="contact-form reveal">
+  <form class="contact-form reveal" id="inquiryForm">
     <div class="form-title">Request a Free Consultation</div>
     <div class="form-row">
       <div class="form-group">
         <label>First Name</label>
-        <input type="text" placeholder="Juan" />
+        <input type="text" name="first_name" placeholder="Juan" required />
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" placeholder="dela Cruz" />
+        <input type="text" name="last_name" placeholder="dela Cruz" required />
       </div>
     </div>
     <div class="form-group">
       <label>Email Address</label>
-      <input type="email" placeholder="juan@email.com" />
+      <input type="email" name="email" placeholder="juan@email.com" required />
     </div>
     <div class="form-group">
       <label>Phone / Viber</label>
-      <input type="tel" placeholder="+63 9XX XXX XXXX" />
+      <input type="tel" name="phone" placeholder="+63 9XX XXX XXXX" required />
     </div>
     <div class="form-group">
       <label>Legal Matter</label>
-      <select>
+      <select name="legal_matter" required>
         <option value="">Select a practice area…</option>
         <option>Family Law (Annulment, Custody)</option>
         <option>Criminal Defense</option>
@@ -703,10 +713,11 @@
     </div>
     <div class="form-group">
       <label>Brief Description</label>
-      <textarea placeholder="Please briefly describe your legal concern…"></textarea>
+      <textarea name="message" placeholder="Please briefly describe your legal concern…" required></textarea>
     </div>
-    <button type="button" class="form-submit" onclick="alert('Thank you! We will contact you within 24 hours.')">Send Inquiry →</button>
-  </div>
+    <button type="submit" class="form-submit">Send Inquiry →</button>
+    <div class="form-status" id="inquiryStatus" aria-live="polite"></div>
+  </form>
 </section>
 
 <!-- ─── FOOTER ─── -->
@@ -744,10 +755,12 @@
     <div class="footer-col">
       <div class="footer-col-title">Contact</div>
       <ul>
-        <li><a href="#">Book Consultation</a></li>
-        <li><a href="#">Minglanilla, Cebu</a></li>
-        <li><a href="#">+63 917 XXX XXXX</a></li>
-        <li><a href="#">Facebook Page</a></li>
+        <li><a href="#contact">Book Consultation</a></li>
+        <li><a href="https://www.google.com/maps/search/18+Julio+St.+Tulay+Minglanilla+Cebu" target="_blank" rel="noopener noreferrer">18 Julio St., Tulay, Minglanilla, Cebu</a></li>
+        <li><a href="tel:+639666610923">0966-661-0923</a></li>
+        <li><a href="tel:+639691130000">0969-113-0000</a></li>
+        <li><a href="mailto:consult@quiapolaw.com">consult@quiapolaw.com</a></li>
+        <li><a href="https://www.facebook.com/atty.jnq" target="_blank" rel="noopener noreferrer">Facebook Page</a></li>
         <li><a href="#">Privacy Policy</a></li>
       </ul>
     </div>
@@ -787,6 +800,32 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
   }, { threshold: 0.12 });
   revealEls.forEach(el => observer.observe(el));
+
+  const inquiryForm = document.getElementById('inquiryForm');
+  const inquiryStatus = document.getElementById('inquiryStatus');
+
+  inquiryForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const firstName = inquiryForm.first_name.value.trim();
+    const lastName = inquiryForm.last_name.value.trim();
+    const email = inquiryForm.email.value.trim();
+    const phone = inquiryForm.phone.value.trim();
+    const legalMatter = inquiryForm.legal_matter.value.trim();
+    const message = inquiryForm.message.value.trim();
+
+    const subject = encodeURIComponent(`Website Inquiry from ${firstName} ${lastName}`);
+    const body = encodeURIComponent(
+      `Name: ${firstName} ${lastName}\n` +
+      `Email: ${email}\n` +
+      `Phone / Viber: ${phone}\n` +
+      `Legal Matter: ${legalMatter}\n\n` +
+      `${message}`
+    );
+
+    inquiryStatus.textContent = 'Opening your email app with a prefilled inquiry...';
+    window.location.href = `mailto:consult@quiapolaw.com?subject=${subject}&body=${body}`;
+  });
 </script>
 </body>
 </html>
