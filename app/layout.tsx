@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { getSiteStyles } from '@/lib/site-content';
+import './globals.css';
 
 export const metadata = {
   title: 'Quiapo Law — Filipino Legal Excellence',
@@ -10,8 +10,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const siteStyles = getSiteStyles();
-
   return (
     <html lang="en">
       <head>
@@ -23,7 +21,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <style dangerouslySetInnerHTML={{ __html: siteStyles }} />
       </head>
       <body>{children}</body>
     </html>
