@@ -47,11 +47,16 @@
   }
   .nav-logo-mark {
     width: 42px; height: 42px;
-    background: var(--orange);
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    flex: 0 0 42px;
   }
-  .nav-logo-mark svg { width: 24px; height: 24px; fill: white; }
+  .nav-logo-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .nav-logo-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.35rem; font-weight: 700;
@@ -514,11 +519,27 @@
   }
   .footer-brand {}
   .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.6rem; font-weight: 700; color: white; margin-bottom: 16px;
     letter-spacing: 0.04em;
   }
   .footer-logo span { color: var(--orange); }
+  .footer-logo-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex: 0 0 42px;
+  }
+  .footer-logo-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .footer-brand-desc { font-size: 0.8rem; line-height: 1.8; color: rgba(255,255,255,0.4); }
   .footer-col-title {
     font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
@@ -781,9 +802,7 @@
 <nav id="navbar">
   <a href="#" class="nav-logo">
     <div class="nav-logo-mark">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2 C9 2 7 4 7 7 L7 17 C7 20 9 22 12 22 C15 22 17 20 17 17 L17 7 C17 4 15 2 12 2Z M9 2 L15 2 L15 0 L9 0Z M9 22 L15 22 L15 24 L9 24Z"/>
-      </svg>
+      <img src="logo.jpg" alt="Quiapo Law logo">
     </div>
     <div class="nav-logo-text">QUIAPO <span>LAW</span></div>
   </a>
@@ -1176,7 +1195,12 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo">QUIAPO <span>LAW</span></div>
+      <div class="footer-logo">
+        <div class="footer-logo-mark">
+          <img src="logo.jpg" alt="Quiapo Law logo">
+        </div>
+        <div>QUIAPO <span>LAW</span></div>
+      </div>
       <p class="footer-brand-desc">A trusted Philippine law firm dedicated to justice, integrity, and excellence in legal service. Proudly serving Cebu and the Visayas.</p>
     </div>
     <div class="footer-col">
