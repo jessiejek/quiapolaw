@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quiapo Law — Filipino Legal Excellence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --orange: #D94213;
+    --navy: #1B2A4A;
+    --navy-light: #2A3D6B;
+    --white: #FFFFFF;
+    --cream: #F9F6F1;
+    --gray: #6B7280;
+    --border: rgba(27,42,74,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 72px;
+    background: rgba(249,246,241,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 32px rgba(27,42,74,0.10); }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 42px; height: 42px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-mark svg { width: 24px; height: 24px; fill: white; }
+  .nav-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--navy); letter-spacing: 0.04em;
+  }
+  .nav-logo-text span { color: var(--orange); }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--navy);
+    text-decoration: none; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+    height: 2px; background: var(--orange);
+    transform: scaleX(0); transition: transform 0.25s;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--orange); color: white;
+    padding: 10px 24px; border: none; cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--navy); transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 5vw 80px 7vw;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 2px; background: var(--orange);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--navy); margin-bottom: 28px;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--orange);
+  }
+  .hero-title strong {
+    font-weight: 700; display: block;
+  }
+
+  .hero-desc {
+    font-size: 0.92rem; font-weight: 400; line-height: 1.8;
+    color: var(--gray); max-width: 440px; margin-bottom: 44px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    background: var(--orange); color: white;
+    padding: 16px 36px; text-decoration: none;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(217,66,19,0.25);
+  }
+
+  .btn-secondary {
+    color: var(--navy); text-decoration: none;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; display: flex; align-items: center; gap: 10px;
+    transition: gap 0.2s;
+  }
+  .btn-secondary:hover { gap: 16px; }
+  .btn-secondary::after { content: '→'; font-size: 1rem; }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 60px;
+    padding-top: 40px; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 700; color: var(--orange); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gray); margin-top: 4px;
+  }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+  }
+  .hero-right-bg {
+    position: absolute; inset: 0;
+    background: var(--navy);
+  }
+  .hero-right-pattern {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      45deg, var(--white) 0, var(--white) 1px, transparent 0, transparent 50%
+    );
+    background-size: 24px 24px;
+  }
+  .hero-right-content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 60px;
+  }
+  .hero-badge {
+    background: var(--orange);
+    color: white; padding: 6px 18px;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; display: inline-block; margin-bottom: 24px;
+    align-self: flex-start;
+  }
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem; font-weight: 300; line-height: 1.35;
+    color: white; margin-bottom: 28px;
+  }
+  .hero-quote em { font-style: italic; color: #F4A97E; }
+  .hero-cite {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+  }
+
+  .hero-pillar-icon {
+    position: absolute; top: 48px; right: 48px;
+    width: 120px; height: 120px;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-pillar-icon svg { width: 64px; height: 64px; }
+
+  /* ─── MARQUEE ─── */
+  .marquee-strip {
+    background: var(--orange);
+    padding: 14px 0; overflow: hidden;
+    display: flex; gap: 0;
+  }
+  .marquee-inner {
+    display: flex; gap: 48px; white-space: nowrap;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-item {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: white;
+    display: flex; align-items: center; gap: 48px;
+  }
+  .marquee-item::after { content: '◆'; opacity: 0.6; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ─── PRACTICE AREAS ─── */
+  #practice {
+    padding: 120px 7vw;
+  }
+  .section-header {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; margin-bottom: 72px; align-items: end;
+  }
+  .section-eyebrow {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-eyebrow::before { content:''; width:32px; height:2px; background:var(--orange); display:block; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 300; line-height: 1.1; color: var(--navy);
+  }
+  .section-title strong { font-weight: 700; display: block; }
+  .section-desc {
+    font-size: 0.9rem; line-height: 1.85; color: var(--gray);
+    max-width: 460px; align-self: end;
+  }
+
+  .practice-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .practice-card {
+    background: white; padding: 44px 36px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    cursor: default; position: relative; overflow: hidden;
+  }
+  .practice-card::before {
+    content: ''; position: absolute; bottom: 0; right: 0;
+    width: 80px; height: 80px;
+    background: var(--orange); opacity: 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    transition: opacity 0.3s;
+  }
+  .practice-card:hover { border-top-color: var(--orange); transform: translateY(-4px); box-shadow: 0 20px 48px rgba(27,42,74,0.10); }
+  .practice-card:hover::before { opacity: 0.08; }
+
+  .practice-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 700; color: var(--border);
+    line-height: 1; margin-bottom: 20px;
+    transition: color 0.25s;
+  }
+  .practice-card:hover .practice-num { color: rgba(217,66,19,0.15); }
+
+  .practice-icon {
+    width: 44px; height: 44px;
+    background: var(--navy); border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .practice-icon svg { width: 22px; height: 22px; fill: white; }
+
+  .practice-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .practice-text {
+    font-size: 0.82rem; line-height: 1.75; color: var(--gray);
+  }
+
+  /* ─── ABOUT / PROFILE ─── */
+  #about {
+    background: var(--navy);
+    padding: 120px 7vw;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center;
+  }
+  .about-left { position: relative; }
+  .about-img-wrap {
+    position: relative;
+    background: var(--navy-light);
+    aspect-ratio: 3/4; max-width: 420px;
+  }
+  .about-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 16px;
+    color: rgba(255,255,255,0.3);
+  }
+  .about-img-placeholder svg { width: 64px; height: 64px; fill: rgba(255,255,255,0.3); }
+  .about-img-placeholder p { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .about-img-border {
+    position: absolute; bottom: -20px; right: -20px;
+    width: calc(100% - 40px); height: calc(100% - 40px);
+    border: 2px solid var(--orange); pointer-events: none;
+    max-width: 380px;
+  }
+  .about-years {
+    position: absolute; top: 24px; left: -24px;
+    background: var(--orange); padding: 20px 24px;
+  }
+  .about-years-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 700; color: white; line-height: 1;
+  }
+  .about-years-label {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.8);
+  }
+
+  .about-right .section-eyebrow { color: #F4A97E; }
+  .about-right .section-eyebrow::before { background: #F4A97E; }
+  .about-right .section-title { color: white; }
+
+  .about-desc {
+    font-size: 0.9rem; line-height: 1.9; color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+  }
+
+  .about-credentials {
+    display: flex; flex-direction: column; gap: 16px; margin-bottom: 44px;
+  }
+  .cred-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 16px 20px; background: rgba(255,255,255,0.05);
+    border-left: 3px solid var(--orange);
+  }
+  .cred-icon { color: var(--orange); font-size: 1.1rem; margin-top: 1px; }
+  .cred-title {
+    font-size: 0.8rem; font-weight: 700; color: white; margin-bottom: 2px;
+    letter-spacing: 0.05em;
+  }
+  .cred-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+
+  /* ─── WHY US ─── */
+  #why {
+    padding: 120px 7vw;
+    background: white;
+  }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 40px;
+    margin-top: 72px;
+  }
+  .why-item { text-align: center; }
+  .why-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 700;
+    color: var(--cream); line-height: 1;
+    margin-bottom: -20px; position: relative; z-index: 0;
+  }
+  .why-icon {
+    width: 56px; height: 56px;
+    background: var(--orange); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; position: relative; z-index: 1;
+  }
+  .why-icon svg { width: 26px; height: 26px; fill: white; }
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .why-text { font-size: 0.82rem; line-height: 1.75; color: var(--gray); }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials {
+    padding: 120px 7vw;
+    background: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  #testimonials::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40rem; font-weight: 700;
+    color: var(--navy); opacity: 0.03;
+    position: absolute; top: -80px; left: 5vw;
+    line-height: 1; pointer-events: none;
+  }
+  .testimonial-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 28px;
+    margin-top: 72px;
+  }
+  .testimonial-card {
+    background: white; padding: 40px 36px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .testimonial-card:hover { border-bottom-color: var(--orange); box-shadow: 0 12px 40px rgba(27,42,74,0.08); }
+  .testimonial-stars { color: var(--orange); font-size: 0.8rem; letter-spacing: 4px; margin-bottom: 20px; }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400; line-height: 1.65;
+    color: var(--navy); margin-bottom: 28px; font-style: italic;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 14px; }
+  .testimonial-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--navy); display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700; color: white;
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-size: 0.8rem; font-weight: 700; color: var(--navy); margin-bottom: 2px;
+  }
+  .testimonial-role { font-size: 0.72rem; color: var(--gray); }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--navy);
+    padding: 120px 7vw;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  }
+  .contact-left .section-eyebrow { color: #F4A97E; }
+  .contact-left .section-eyebrow::before { background: #F4A97E; }
+  .contact-left .section-title { color: white; margin-bottom: 32px; }
+  .contact-desc { font-size: 0.9rem; line-height: 1.85; color: rgba(255,255,255,0.6); margin-bottom: 44px; }
+
+  .contact-info { display: flex; flex-direction: column; gap: 24px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-item-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(255,255,255,0.07); border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .contact-item-icon svg { width: 20px; height: 20px; fill: var(--orange); }
+  .contact-item-label {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px;
+  }
+  .contact-item-value { font-size: 0.88rem; color: white; line-height: 1.5; }
+
+  .contact-form {
+    background: rgba(255,255,255,0.05);
+    padding: 48px 44px;
+  }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 700; color: white; margin-bottom: 32px;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: white; padding: 12px 16px;
+    font-family: 'Montserrat', sans-serif; font-size: 0.83rem;
+    outline: none; transition: border-color 0.2s;
+    appearance: none; -webkit-appearance: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--orange);
+  }
+  .form-group select option { background: var(--navy); color: white; }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    width: 100%; background: var(--orange);
+    border: none; color: white; padding: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: #BF3810; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0F1A30;
+    padding: 60px 7vw 40px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px;
+    padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 36px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 700; color: white; margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+  .footer-logo span { color: var(--orange); }
+  .footer-brand-desc { font-size: 0.8rem; line-height: 1.8; color: rgba(255,255,255,0.4); }
+  .footer-col-title {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: white; margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    font-size: 0.8rem; color: rgba(255,255,255,0.45);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--orange); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; font-style: italic;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ─── HAMBURGER + MOBILE DRAWER ─── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer;
+    padding: 6px; margin-left: 8px;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--navy); border-radius: 2px;
+    transition: all 0.3s;
+  }
+  @media (max-width: 1023px) {
+    .nav-hamburger { display: flex; }
+    .nav-links { display: none !important; }
+  }
+
+  .mobile-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(320px, 85vw);
+    background: var(--cream);
+    z-index: 200; padding: 80px 36px 48px;
+    display: flex; flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -8px 0 40px rgba(27,42,74,0.15);
+  }
+  .mobile-drawer.open { transform: translateX(0); }
+
+  .drawer-overlay {
+    position: fixed; inset: 0; z-index: 190;
+    background: rgba(27,42,74,0.45);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.35s;
+  }
+  .drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+  .drawer-close {
+    position: absolute; top: 20px; right: 20px;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.2rem; color: var(--navy); padding: 8px;
+    line-height: 1;
+  }
+  .drawer-links { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .drawer-links li { border-bottom: 1px solid var(--border); }
+  .drawer-links a {
+    display: block; padding: 18px 0;
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--navy); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .drawer-links a:hover { color: var(--orange); }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ══════════════════════════════════════════
+     RESPONSIVE BREAKPOINTS
+     1) Large Desktop  : > 1280px  (already base styles)
+     2) Small Laptop   : 1024px – 1279px
+     3) iPad / Tablet  : 768px  – 1023px
+     4) Mobile         : < 768px
+  ══════════════════════════════════════════ */
+
+  /* ─── SMALL LAPTOP  1024px – 1279px ─── */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    nav { padding: 0 4vw; }
+
+    .hero-left { padding: 60px 4vw 60px 5vw; }
+    .hero-title { font-size: clamp(2.4rem, 4vw, 3.8rem); }
+    .hero-right-content { padding: 40px; }
+    .hero-quote { font-size: 1.5rem; }
+    .hero-stats { gap: 28px; }
+
+    #practice { padding: 90px 5vw; }
+    .practice-grid { grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .practice-card { padding: 36px 28px; }
+
+    #about { padding: 90px 5vw; gap: 56px; }
+    .about-img-wrap { max-width: 360px; }
+
+    #why { padding: 90px 5vw; }
+    .why-grid { grid-template-columns: repeat(4,1fr); gap: 28px; }
+
+    #testimonials { padding: 90px 5vw; }
+    .testimonial-grid { grid-template-columns: repeat(3,1fr); gap: 20px; }
+
+    #contact { padding: 90px 5vw; gap: 56px; }
+    .contact-form { padding: 40px 36px; }
+
+    footer { padding: 56px 5vw 36px; }
+    .footer-top { gap: 40px; }
+
+    .section-title { font-size: clamp(2rem, 3vw, 2.8rem); }
+  }
+
+  /* ─── IPAD / TABLET  768px – 1023px ─── */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    nav { padding: 0 4vw; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 0.62rem; }
+    .nav-cta { padding: 9px 18px; font-size: 0.62rem; }
+
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left {
+      padding: 80px 6vw 60px;
+      align-items: center; text-align: center;
+    }
+    .hero-eyebrow { justify-content: center; }
+    .hero-eyebrow::before { display: none; }
+    .hero-title { font-size: clamp(2.8rem, 6vw, 4rem); }
+    .hero-desc { max-width: 560px; margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; flex-wrap: wrap; }
+    .hero-stats { justify-content: center; gap: 40px; padding-top: 32px; margin-top: 40px; }
+    .hero-right { display: none; }
+
+    #practice { padding: 80px 6vw; }
+    .section-header { grid-template-columns: 1fr; gap: 20px; }
+    .section-desc { max-width: 100%; }
+    .practice-grid { grid-template-columns: repeat(2,1fr); gap: 3px; }
+    .practice-card { padding: 36px 28px; }
+
+    #about {
+      grid-template-columns: 1fr; padding: 80px 6vw;
+      gap: 0;
+    }
+    .about-left { display: none; }
+    .about-right .section-title { font-size: clamp(2rem, 4vw, 3rem); }
+
+    #why { padding: 80px 6vw; }
+    .why-grid { grid-template-columns: repeat(2,1fr); gap: 36px; }
+
+    #testimonials { padding: 80px 6vw; }
+    .testimonial-grid { grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .testimonial-grid .testimonial-card:last-child {
+      grid-column: 1 / -1;
+      max-width: 500px; margin: 0 auto; width: 100%;
+    }
+
+    #contact { grid-template-columns: 1fr; padding: 80px 6vw; gap: 48px; }
+    .contact-form { padding: 40px 36px; }
+    .form-row { grid-template-columns: 1fr 1fr; }
+
+    footer { padding: 56px 6vw 36px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); }
+  }
+
+  /* ─── MOBILE  < 768px ─── */
+  @media (max-width: 767px) {
+    /* Nav — hamburger hidden, compact */
+    nav { padding: 0 5vw; height: 64px; }
+    .nav-links { display: none; }
+    .nav-logo-text { font-size: 1.1rem; }
+    .nav-cta { padding: 8px 16px; font-size: 0.62rem; }
+
+    /* Hero */
+    #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 64px; }
+    .hero-right { display: none; }
+    .hero-left {
+      padding: 56px 6vw 48px;
+      align-items: flex-start; text-align: left;
+    }
+    .hero-title { font-size: clamp(2.2rem, 10vw, 3rem); }
+    .hero-desc { font-size: 0.85rem; margin-bottom: 32px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .btn-primary { width: 100%; text-align: center; padding: 14px 24px; }
+    .hero-stats { flex-wrap: wrap; gap: 20px; margin-top: 40px; padding-top: 28px; }
+    .stat-num { font-size: 2.2rem; }
+
+    /* Marquee */
+    .marquee-strip { padding: 12px 0; }
+    .marquee-item { font-size: 0.6rem; }
+
+    /* Sections common */
+    #practice, #why, #testimonials { padding: 64px 6vw; }
+    .section-header { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; }
+    .section-title { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+    .section-eyebrow { font-size: 0.6rem; }
+
+    /* Practice */
+    .practice-grid { grid-template-columns: 1fr; gap: 3px; }
+    .practice-card { padding: 32px 24px; }
+    .practice-num { font-size: 3rem; }
+    .practice-name { font-size: 1.25rem; }
+
+    /* About */
+    #about { grid-template-columns: 1fr; padding: 64px 6vw; gap: 0; }
+    .about-left { display: none; }
+    .about-right .section-title { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+    .about-desc { font-size: 0.85rem; }
+    .cred-item { padding: 14px 16px; }
+
+    /* Why */
+    .why-grid { grid-template-columns: 1fr; gap: 32px; }
+    .why-item { text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
+    .why-icon { margin: 0 0 16px; }
+    .why-number { font-size: 3.5rem; margin-bottom: -14px; }
+
+    /* Testimonials */
+    .testimonial-grid { grid-template-columns: 1fr; gap: 16px; }
+    .testimonial-card { padding: 32px 24px; }
+    .testimonial-text { font-size: 1rem; }
+
+    /* Contact */
+    #contact { grid-template-columns: 1fr; padding: 64px 6vw; gap: 40px; }
+    .contact-form { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .contact-desc { font-size: 0.85rem; }
+
+    /* Footer */
+    footer { padding: 48px 6vw 32px; }
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    .footer-logo { font-size: 1.3rem; }
+  }
+
+  /* ─── VERY SMALL PHONES  < 380px ─── */
+  @media (max-width: 379px) {
+    .hero-title { font-size: 1.9rem; }
+    .nav-cta { display: none; }
+    .hero-actions { gap: 12px; }
+    .stat-num { font-size: 1.9rem; }
+    .practice-card { padding: 28px 20px; }
+    .contact-form { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2 C9 2 7 4 7 7 L7 17 C7 20 9 22 12 22 C15 22 17 20 17 17 L17 7 C17 4 15 2 12 2Z M9 2 L15 2 L15 0 L9 0Z M9 22 L15 22 L15 24 L9 24Z"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">QUIAPO <span>LAW</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#practice">Practice Areas</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Free Consultation</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
+  <ul class="drawer-links">
+    <li><a href="#practice" onclick="closeDrawer()">Practice Areas</a></li>
+    <li><a href="#about" onclick="closeDrawer()">About</a></li>
+    <li><a href="#why" onclick="closeDrawer()">Why Us</a></li>
+    <li><a href="#testimonials" onclick="closeDrawer()">Clients</a></li>
+    <li><a href="#contact" onclick="closeDrawer()">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-primary" onclick="closeDrawer()" style="margin-top:32px; text-align:center; width:100%;">Free Consultation</a>
+</div>
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Cebu · Visayas · Philippines</div>
+    <h1 class="hero-title">
+      Justice <em>Served</em><br>
+      <strong>With Integrity</strong>
+    </h1>
+    <p class="hero-desc">
+      Quiapo Law is a trusted Philippine law firm dedicated to protecting your rights, advancing your interests, and delivering results—with honesty and competence at every step.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+      <a href="#practice" class="btn-secondary">Our Practice Areas</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">2024</div>
+        <div class="stat-label">Bar Passer</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Dedication</div>
+      </div>
+      <div>
+        <div class="stat-num">UV</div>
+        <div class="stat-label">Law Graduate</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-right-pattern"></div>
+    <div class="hero-pillar-icon">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="10" width="40" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+        <rect x="25" y="16" width="30" height="3" rx="1.5" fill="rgba(255,255,255,0.3)"/>
+        <path d="M28 19 Q24 24 24 30 L24 60 L30 60 L30 30 Q30 24 32 19Z" fill="rgba(255,255,255,0.35)"/>
+        <path d="M52 19 Q56 24 56 30 L56 60 L50 60 L50 30 Q50 24 48 19Z" fill="rgba(255,255,255,0.35)"/>
+        <rect x="38" y="19" width="4" height="41" rx="1" fill="rgba(255,255,255,0.2)"/>
+        <path d="M28 19 C28 19 40 22 52 19" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+        <rect x="22" y="60" width="36" height="4" rx="1" fill="rgba(255,255,255,0.35)"/>
+        <path d="M26 16 Q27 12 40 10 Q53 12 54 16" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="hero-right-content">
+      <span class="hero-badge">Minglanilla, Cebu, Philippines</span>
+      <blockquote class="hero-quote">
+        "The law is not a <em>maze</em>—<br>it is a path. We help<br>you walk it with confidence."
+      </blockquote>
+      <cite class="hero-cite">— Quiapo Law Philosophy</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">Family Law</span>
+    <span class="marquee-item">Corporate Law</span>
+    <span class="marquee-item">Criminal Defense</span>
+    <span class="marquee-item">Real Estate Law</span>
+    <span class="marquee-item">Labor Law</span>
+    <span class="marquee-item">Immigration Law</span>
+    <span class="marquee-item">Civil Litigation</span>
+    <span class="marquee-item">Estate Planning</span>
+    <span class="marquee-item">Family Law</span>
+    <span class="marquee-item">Corporate Law</span>
+    <span class="marquee-item">Criminal Defense</span>
+    <span class="marquee-item">Real Estate Law</span>
+    <span class="marquee-item">Labor Law</span>
+    <span class="marquee-item">Immigration Law</span>
+    <span class="marquee-item">Civil Litigation</span>
+    <span class="marquee-item">Estate Planning</span>
+  </div>
+</div>
+
+<!-- ─── PRACTICE AREAS ─── -->
+<section id="practice">
+  <div class="section-header">
+    <div class="reveal">
+      <div class="section-eyebrow">Areas of Expertise</div>
+      <h2 class="section-title">What We <strong>Fight For</strong></h2>
+    </div>
+    <p class="section-desc reveal reveal-delay-2">
+      From family disputes to corporate matters, we bring deep legal knowledge and personal dedication to every case we take on across the Philippines.
+    </p>
+  </div>
+  <div class="practice-grid">
+
+    <div class="practice-card reveal">
+      <div class="practice-num">01</div>
+      <div class="practice-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+      </div>
+      <div class="practice-name">Family Law</div>
+      <p class="practice-text">Annulment, legal separation, custody, support, and adoption handled with sensitivity and legal precision.</p>
+    </div>
+
+    <div class="practice-card reveal reveal-delay-1">
+      <div class="practice-num">02</div>
+      <div class="practice-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      </div>
+      <div class="practice-name">Criminal Defense</div>
+      <p class="practice-text">Vigorous representation for those facing criminal charges, from inquest to trial and appeals.</p>
+    </div>
+
+    <div class="practice-card reveal reveal-delay-2">
+      <div class="practice-num">03</div>
+      <div class="practice-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.86.18-1 0-2.21-1.79-4-4-4S10 2.79 10 5c0 .14.11.56.18 1H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <div class="practice-name">Corporate Law</div>
+      <p class="practice-text">Business formation, contracts, SEC compliance, mergers, and corporate governance for Philippine enterprises.</p>
+    </div>
+
+    <div class="practice-card reveal">
+      <div class="practice-num">04</div>
+      <div class="practice-icon">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+      <div class="practice-name">Real Estate Law</div>
+      <p class="practice-text">Title disputes, land registration, ejectment, property acquisition, and Torrens title issues resolved.</p>
+    </div>
+
+    <div class="practice-card reveal reveal-delay-1">
+      <div class="practice-num">05</div>
+      <div class="practice-icon">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      </div>
+      <div class="practice-name">Labor Law</div>
+      <p class="practice-text">NLRC cases, illegal dismissal, employee benefits, and labor standards compliance for workers and employers.</p>
+    </div>
+
+    <div class="practice-card reveal reveal-delay-2">
+      <div class="practice-num">06</div>
+      <div class="practice-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 3L5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z"/></svg>
+      </div>
+      <div class="practice-name">Civil Litigation</div>
+      <p class="practice-text">Breach of contract, damages, injunctions, and civil claims pursued aggressively in all Philippine courts.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-left reveal">
+    <div class="about-years">
+      <div class="about-years-num">2024</div>
+      <div class="about-years-label">Bar<br>Passer</div>
+    </div>
+    <div class="about-img-wrap">
+      <div class="about-img-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <p>Attorney Photo</p>
+      </div>
+    </div>
+    <div class="about-img-border"></div>
+  </div>
+  <div class="about-right">
+    <div class="section-eyebrow reveal">About The Firm</div>
+    <h2 class="section-title reveal reveal-delay-1">Your Trusted <strong>Legal Partner</strong></h2>
+    <p class="about-desc reveal reveal-delay-2">
+      Quiapo Law was founded on the principle that every Filipino deserves access to justice—regardless of circumstances. Based in Minglanilla, Cebu, our firm brings fresh legal expertise, modern thinking, and genuine care for our clients' outcomes.
+    </p>
+    <p class="about-desc reveal reveal-delay-2">
+      Having passed the Philippine Bar Examinations in December 2024, our attorney is equipped with up-to-date knowledge of Philippine law and a burning passion to serve clients across the Visayas with honesty, diligence, and integrity.
+    </p>
+    <div class="about-credentials">
+      <div class="cred-item reveal reveal-delay-1">
+        <div class="cred-icon">🎓</div>
+        <div>
+          <div class="cred-title">Juris Doctor</div>
+          <div class="cred-sub">University of the Visayas College of Law</div>
+        </div>
+      </div>
+      <div class="cred-item reveal reveal-delay-2">
+        <div class="cred-icon">⚖️</div>
+        <div>
+          <div class="cred-title">Member, Integrated Bar of the Philippines</div>
+          <div class="cred-sub">IBP Cebu Chapter · Roll of Attorneys No. XXXXX</div>
+        </div>
+      </div>
+      <div class="cred-item reveal reveal-delay-3">
+        <div class="cred-icon">🏛️</div>
+        <div>
+          <div class="cred-title">Philippine Bar Examination Passer</div>
+          <div class="cred-sub">December 2024 Bar · Supreme Court of the Philippines</div>
+        </div>
+      </div>
+    </div>
+    <a href="#contact" class="btn-primary reveal">Book a Consultation</a>
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="why">
+  <div style="text-align:center; margin-bottom: 72px;">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Why Choose Us</div>
+    <h2 class="section-title reveal reveal-delay-1" style="display:inline-block; text-align:center;">The Quiapo Law <strong>Difference</strong></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-item reveal">
+      <div class="why-number">01</div>
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      <div class="why-title">Fresh & Current Legal Knowledge</div>
+      <p class="why-text">December 2024 Bar passer with the most up-to-date knowledge of Philippine laws, jurisprudence, and legal developments.</p>
+    </div>
+    <div class="why-item reveal reveal-delay-1">
+      <div class="why-number">02</div>
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      </div>
+      <div class="why-title">Confidential & Ethical</div>
+      <p class="why-text">Strict adherence to the Code of Professional Responsibility. Your information stays protected.</p>
+    </div>
+    <div class="why-item reveal reveal-delay-2">
+      <div class="why-number">03</div>
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23z"/></svg>
+      </div>
+      <div class="why-title">Client-First Approach</div>
+      <p class="why-text">We listen first. Every legal strategy is tailored to your unique situation, goals, and resources.</p>
+    </div>
+    <div class="why-item reveal reveal-delay-3">
+      <div class="why-number">04</div>
+      <div class="why-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <div class="why-title">Clear Communication</div>
+      <p class="why-text">No legal jargon. We explain your options in plain Filipino or English, so you always know where you stand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="testimonials">
+  <div class="section-header">
+    <div class="reveal">
+      <div class="section-eyebrow">Client Stories</div>
+      <h2 class="section-title">What Our <strong>Clients Say</strong></h2>
+    </div>
+    <p class="section-desc reveal reveal-delay-2">
+      Real results for real Filipinos. Here's what some of our clients have shared about working with Quiapo Law.
+    </p>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Quiapo Law handled my annulment case with utmost professionalism and compassion. They guided me every step of the way and got a favorable decision faster than I expected."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div>
+          <div class="testimonial-name">Maria Santos</div>
+          <div class="testimonial-role">Family Law Client · Cebu City</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"I was wrongfully dismissed from my job. Quiapo Law filed the NLRC case and won full backwages and separation pay. Reliable, honest, and extremely knowledgeable."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">R</div>
+        <div>
+          <div class="testimonial-name">Roberto Dela Cruz</div>
+          <div class="testimonial-role">Labor Law Client · Mandaue City, Cebu</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Our company's incorporation and all our contracts were handled by Quiapo Law. Meticulous, fast, and always available for questions. Highly recommended for SMEs."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">J</div>
+        <div>
+          <div class="testimonial-name">Jose Reyes</div>
+          <div class="testimonial-role">Corporate Law Client · Lapu-Lapu City, Cebu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-left">
+    <div class="section-eyebrow reveal">Get In Touch</div>
+    <h2 class="section-title reveal reveal-delay-1">Let's Discuss <strong>Your Case</strong></h2>
+    <p class="contact-desc reveal reveal-delay-2">
+      Your first consultation is free. Reach out today and let us help you understand your legal options—no obligation, no pressure.
+    </p>
+    <div class="contact-info">
+      <div class="contact-item reveal">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Office Address</div>
+          <div class="contact-item-value">18 De Julio St. Tulay<br>Minglanilla, Cebu 6046</div>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-1">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Phone / Viber</div>
+          <div class="contact-item-value">+63 (2) 8XXX-XXXX<br>+63 917 XXX XXXX</div>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-2">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value">consult@quiapolaw.com</div>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-3">
+        <div class="contact-item-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        </div>
+        <div>
+          <div class="contact-item-label">Office Hours</div>
+          <div class="contact-item-value">Mon–Fri: 8:00 AM – 6:00 PM<br>Sat: 9:00 AM – 1:00 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal">
+    <div class="form-title">Request a Free Consultation</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Juan" />
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="dela Cruz" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" placeholder="juan@email.com" />
+    </div>
+    <div class="form-group">
+      <label>Phone / Viber</label>
+      <input type="tel" placeholder="+63 9XX XXX XXXX" />
+    </div>
+    <div class="form-group">
+      <label>Legal Matter</label>
+      <select>
+        <option value="">Select a practice area…</option>
+        <option>Family Law (Annulment, Custody)</option>
+        <option>Criminal Defense</option>
+        <option>Corporate Law</option>
+        <option>Real Estate Law</option>
+        <option>Labor Law</option>
+        <option>Civil Litigation</option>
+        <option>Estate Planning</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Brief Description</label>
+      <textarea placeholder="Please briefly describe your legal concern…"></textarea>
+    </div>
+    <button type="button" class="form-submit" onclick="alert('Thank you! We will contact you within 24 hours.')">Send Inquiry →</button>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">QUIAPO <span>LAW</span></div>
+      <p class="footer-brand-desc">A trusted Philippine law firm dedicated to justice, integrity, and excellence in legal service. Proudly serving Cebu and the Visayas.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Practice Areas</div>
+      <ul>
+        <li><a href="#">Family Law</a></li>
+        <li><a href="#">Criminal Defense</a></li>
+        <li><a href="#">Corporate Law</a></li>
+        <li><a href="#">Real Estate</a></li>
+        <li><a href="#">Labor Law</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">The Firm</div>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Attorney</a></li>
+        <li><a href="#">Testimonials</a></li>
+        <li><a href="#">Legal Blog</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <ul>
+        <li><a href="#">Book Consultation</a></li>
+        <li><a href="#">Minglanilla, Cebu</a></li>
+        <li><a href="#">+63 917 XXX XXXX</a></li>
+        <li><a href="#">Facebook Page</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Quiapo Law. All rights reserved. · IBP Cebu Chapter</div>
+    <div class="footer-tagline">"Batas para sa bawat Pilipino."</div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile drawer
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+
+  hamburger.addEventListener('click', () => {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
