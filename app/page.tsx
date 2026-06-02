@@ -216,14 +216,45 @@ export default function Page() {
 
       <section id="about">
         <div className="about-left reveal">
-          <div className="about-years">
-            <div className="about-years-num">2024</div>
-            <div className="about-years-label">Bar<br />Passer</div>
+          <div className="about-art" aria-hidden="true">
+            <div className="about-art-glow" />
+            <div className="about-art-watermark">
+              <span>QL</span>
+            </div>
+
+            <div className="about-art-doc about-art-doc-back">
+              <div className="about-art-doc-header" />
+              <div className="about-art-line about-art-line-long" />
+              <div className="about-art-line" />
+              <div className="about-art-line about-art-line-short" />
+              <div className="about-art-signature" />
+            </div>
+
+            <div className="about-art-doc about-art-doc-front">
+              <div className="about-art-doc-header about-art-doc-header-accent" />
+              <div className="about-art-seal">
+                <span>NOTARY</span>
+                <strong>QL</strong>
+              </div>
+              <div className="about-art-line about-art-line-long" />
+              <div className="about-art-line about-art-line-medium" />
+              <div className="about-art-line about-art-line-short" />
+              <div className="about-art-signature about-art-signature-front" />
+            </div>
+
+            <div className="about-art-stamp">
+              <div className="about-art-stamp-ring">
+                <span>OFFICIAL</span>
+                <strong>SEAL</strong>
+              </div>
+            </div>
+
+            <div className="about-art-pen" />
+            <div className="about-art-pen-tip" />
+
+            <div className="about-art-book about-art-book-back" />
+            <div className="about-art-book about-art-book-front" />
           </div>
-          <div className="about-img-wrap">
-            <img src="/Blue%20background%20(1).png" alt="Quiapo Law attorney portrait" />
-          </div>
-          <div className="about-img-border" />
         </div>
         <div className="about-right">
           <div className="section-eyebrow reveal">About The Firm</div>
