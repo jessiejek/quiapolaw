@@ -239,7 +239,7 @@ export default function Page() {
               <div className="cred-icon">⚖️</div>
               <div>
                 <div className="cred-title">Member, Integrated Bar of the Philippines</div>
-                <div className="cred-sub">IBP Cebu Chapter · Roll of Attorneys No. XXXXX</div>
+                <div className="cred-sub">IBP Cebu Chapter · Roll of Attorneys No. 9xxx4</div>
               </div>
             </div>
             <div className="cred-item reveal reveal-delay-2">
