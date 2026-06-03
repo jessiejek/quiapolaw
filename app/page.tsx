@@ -83,9 +83,9 @@ const testimonials = [
   },
   {
     initials: 'R',
-    name: 'Zoe',
-    role: 'Labor Law Client · Mandaue City, Cebu',
-    text: 'I was wrongfully dismissed from my job. Quiapo Law filed the NLRC case and won full backwages and separation pay. Reliable, honest, and extremely knowledgeable.',
+    name: 'Fiona Zoe Abella',
+    role: 'Labor Law Online Consultation · Mandaue City, Cebu',
+    text: 'Such a huge help! Atty was genuinely attentive to my concerns. My consultation with him eased so much anxiety in me and I was supported every step of the way. His expertise made a huge difference in resolving my issue. I highly recommend his services to anyone in need of reliable and compassionate legal assistance.',
   },
   {
     initials: 'W',
