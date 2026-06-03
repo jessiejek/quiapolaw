@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, type FormEvent } from 'react';
 import SiteHooks from './site-hooks';
 
 const practiceAreas = [
@@ -98,6 +99,28 @@ const testimonials = [
 ];
 
 export default function Page() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [legalMatter, setLegalMatter] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    const text = [
+      `Name: ${firstName} ${lastName}`,
+      `Email: ${email}`,
+      `Phone: ${phone}`,
+      `Legal Matter: ${legalMatter}`,
+      `Description: ${message}`,
+    ].join('\n');
+
+    const encoded = encodeURIComponent(text);
+    window.open(`https://m.me/atty.jnq?text=${encoded}`, '_blank');
+  };
+
   return (
     <main>
       <nav id="navbar">
@@ -386,29 +409,62 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <form className="contact-form reveal" id="inquiryForm">
+        <form className="contact-form reveal" id="inquiryForm" onSubmit={handleSubmit}>
           <div className="form-title">Contact Us Now</div>
           <div className="form-row">
             <div className="form-group">
               <label>First Name</label>
-              <input type="text" name="first_name" placeholder="Juan" required />
+              <input
+                type="text"
+                name="first_name"
+                placeholder="Juan"
+                required
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <label>Last Name</label>
-              <input type="text" name="last_name" placeholder="dela Cruz" required />
+              <input
+                type="text"
+                name="last_name"
+                placeholder="dela Cruz"
+                required
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
             </div>
           </div>
           <div className="form-group">
             <label>Email Address</label>
-            <input type="email" name="email" placeholder="juan@email.com" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="juan@email.com"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="form-group">
             <label>Phone / Viber</label>
-            <input type="tel" name="phone" placeholder="+63 9XX XXX XXXX" required />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="+63 9XX XXX XXXX"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
           </div>
           <div className="form-group">
             <label>Legal Matter</label>
-            <select name="legal_matter" required>
+            <select
+              name="legal_matter"
+              required
+              value={legalMatter}
+              onChange={(e) => setLegalMatter(e.target.value)}
+            >
               <option value="">Select a practice area…</option>
               <option>Family Law (Annulment, Custody)</option>
               <option>Criminal Litigation</option>
@@ -422,7 +478,13 @@ export default function Page() {
           </div>
           <div className="form-group">
             <label>Brief Description</label>
-            <textarea name="message" placeholder="Please briefly describe your legal concern…" required />
+            <textarea
+              name="message"
+              placeholder="Please briefly describe your legal concern…"
+              required
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
           </div>
           <p className="captcha-note">
             This site is protected by reCAPTCHA and the Google{' '}
