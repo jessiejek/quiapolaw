@@ -188,6 +188,13 @@
   .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); }
   .form-group select option { background: var(--navy); color: white; }
   .form-group textarea { resize: vertical; min-height: 110px; }
+  .captcha-note {
+    margin: -8px 0 16px;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.45);
+  }
+  .captcha-note a { color: rgba(255,255,255,0.72); text-decoration: underline; text-underline-offset: 2px; }
   .form-submit { width: 100%; background: var(--orange); border: none; color: white; padding: 16px; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
   .form-submit:hover { background: #BF3810; }
   .form-status { min-height: 1.1em; margin-top: 12px; font-size: 0.78rem; color: rgba(255,255,255,0.65); }
@@ -376,6 +383,7 @@
     .contact-form { padding: 32px 24px; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .contact-desc { font-size: 0.85rem; }
+    .captcha-note { font-size: 0.68rem; }
     footer { padding: 48px 6vw 32px; }
     .footer-top { grid-template-columns: 1fr; gap: 36px; }
     .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }

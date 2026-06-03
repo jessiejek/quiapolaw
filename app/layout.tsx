@@ -1,5 +1,8 @@
 import type { ReactNode } from 'react';
+import Script from 'next/script';
 import './globals.css';
+
+const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 export const metadata = {
   title: 'Quiapo Law — Filipino Legal Excellence',
@@ -21,6 +24,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        {recaptchaSiteKey ? (
+          <Script
+            id="recaptcha-v3"
+            src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </head>
       <body>{children}</body>
     </html>

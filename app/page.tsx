@@ -398,6 +398,11 @@ export default function Page() {
             <label>Brief Description</label>
             <textarea name="message" placeholder="Please briefly describe your legal concern…" required />
           </div>
+          <p className="captcha-note">
+            This site is protected by reCAPTCHA and the Google{' '}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and{' '}
+            <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.
+          </p>
           <button type="submit" className="form-submit">Send Inquiry →</button>
           <div className="form-status" id="inquiryStatus" aria-live="polite" />
         </form>
