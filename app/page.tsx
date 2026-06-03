@@ -79,11 +79,11 @@ const testimonials = [
     initials: 'M',
     name: 'Maria Santos',
     role: 'Family Law Client · Cebu City',
-    text: 'Quiapo Law handled my annulment case with utmost professionalism and compassion. They guided me every step of the way and got a favorable decision faster than I expected.',
+    text: 'Quiapo Law handled my annulment case with utmost professionalism and compassion. They guided me every step of the way.',
   },
   {
     initials: 'R',
-    name: 'Roberto Dela Cruz',
+    name: 'Zoe',
     role: 'Labor Law Client · Mandaue City, Cebu',
     text: 'I was wrongfully dismissed from my job. Quiapo Law filed the NLRC case and won full backwages and separation pay. Reliable, honest, and extremely knowledgeable.',
   },
