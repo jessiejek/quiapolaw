@@ -118,7 +118,7 @@ export default function Page() {
     ].join('\n');
 
     const encoded = encodeURIComponent(text);
-    window.open(`https://m.me/atty.jnq?text=${encoded}`, '_blank');
+    window.open(`https://www.facebook.com/messages/t/atty.jnq?text=${encoded}`, '_blank');
   };
 
   return (
