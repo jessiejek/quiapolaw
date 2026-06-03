@@ -4,3 +4,4 @@ node_modules/
 *.log
 chrome-profile/
 edge-profile/
+.env.local

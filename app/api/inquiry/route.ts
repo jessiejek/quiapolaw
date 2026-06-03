@@ -52,7 +52,11 @@ export async function POST(request: Request) {
 
   if (!data.success) {
     return NextResponse.json(
-      { success: false, error: 'reCAPTCHA verification failed.' },
+      {
+        success: false,
+        error: 'reCAPTCHA verification failed.',
+        errorCodes: data['error-codes'] ?? [],
+      },
       { status: 400 },
     );
   }

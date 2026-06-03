@@ -87,6 +87,30 @@ export default function SiteHooks() {
       return window.grecaptcha.execute(recaptchaSiteKey, { action: 'send_inquiry' });
     };
 
+    const verifyCaptchaToken = async (token: string) => {
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          action: 'send_inquiry',
+        }),
+      });
+
+      const result = (await response.json()) as { success?: boolean; error?: string; errorCodes?: string[] };
+
+      if (!response.ok || !result.success) {
+        const browserError = result.errorCodes?.includes('browser-error');
+        const error = new Error(result.error || 'CAPTCHA verification failed. Please try again.');
+        if (browserError) {
+          error.name = 'BrowserError';
+        }
+        throw error;
+      }
+    };
+
     const onSubmit = async (event: Event) => {
       event.preventDefault();
       if (!inquiryForm || isSubmitting) return;
@@ -108,22 +132,31 @@ export default function SiteHooks() {
       }
 
       try {
-        const token = await getCaptchaToken();
-        const response = await fetch('/api/inquiry', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            token,
-            action: 'send_inquiry',
-          }),
-        });
+        let browserErrorRetry = false;
 
-        const result = (await response.json()) as { success?: boolean; error?: string };
+        for (let attempt = 0; attempt < 2; attempt += 1) {
+          try {
+            const token = await getCaptchaToken();
+            await verifyCaptchaToken(token);
+            browserErrorRetry = false;
+            break;
+          } catch (error) {
+            if (
+              error instanceof Error &&
+              error.name === 'BrowserError' &&
+              !browserErrorRetry &&
+              attempt === 0
+            ) {
+              browserErrorRetry = true;
+              if (inquiryStatus) {
+                inquiryStatus.textContent =
+                  'reCAPTCHA had a network issue. Retrying once...';
+              }
+              continue;
+            }
 
-        if (!response.ok || !result.success) {
-          throw new Error(result.error || 'CAPTCHA verification failed. Please try again.');
+            throw error;
+          }
         }
 
         const subject = encodeURIComponent(`Website Inquiry from ${firstName} ${lastName}`.trim());
