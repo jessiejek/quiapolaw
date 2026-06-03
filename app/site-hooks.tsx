@@ -87,7 +87,17 @@ export default function SiteHooks() {
       return window.grecaptcha.execute(recaptchaSiteKey, { action: 'send_inquiry' });
     };
 
-    const verifyCaptchaToken = async (token: string) => {
+    const verifyCaptchaToken = async (
+      token: string,
+      inquiryData: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        phone: string;
+        legalMatter: string;
+        message: string;
+      },
+    ) => {
       const response = await fetch('/api/inquiry', {
         method: 'POST',
         headers: {
@@ -96,14 +106,22 @@ export default function SiteHooks() {
         body: JSON.stringify({
           token,
           action: 'send_inquiry',
+          ...inquiryData,
         }),
       });
 
-      const result = (await response.json()) as { success?: boolean; error?: string; errorCodes?: string[] };
+      const result = (await response.json()) as {
+        success?: boolean;
+        error?: string;
+        errorCodes?: string[];
+        details?: { name?: string; message?: string };
+      };
 
       if (!response.ok || !result.success) {
         const browserError = result.errorCodes?.includes('browser-error');
-        const error = new Error(result.error || 'CAPTCHA verification failed. Please try again.');
+        const errorMessage =
+          result.details?.message || result.error || 'CAPTCHA verification failed. Please try again.';
+        const error = new Error(errorMessage);
         if (browserError) {
           error.name = 'BrowserError';
         }
@@ -115,12 +133,14 @@ export default function SiteHooks() {
       event.preventDefault();
       if (!inquiryForm || isSubmitting) return;
 
-      const firstName = getFieldValue<HTMLInputElement>(inquiryForm, 'first_name');
-      const lastName = getFieldValue<HTMLInputElement>(inquiryForm, 'last_name');
-      const email = getFieldValue<HTMLInputElement>(inquiryForm, 'email');
-      const phone = getFieldValue<HTMLInputElement>(inquiryForm, 'phone');
-      const legalMatter = getFieldValue<HTMLSelectElement>(inquiryForm, 'legal_matter');
-      const message = getFieldValue<HTMLTextAreaElement>(inquiryForm, 'message');
+      const inquiryData = {
+        firstName: getFieldValue<HTMLInputElement>(inquiryForm, 'first_name'),
+        lastName: getFieldValue<HTMLInputElement>(inquiryForm, 'last_name'),
+        email: getFieldValue<HTMLInputElement>(inquiryForm, 'email'),
+        phone: getFieldValue<HTMLInputElement>(inquiryForm, 'phone'),
+        legalMatter: getFieldValue<HTMLSelectElement>(inquiryForm, 'legal_matter'),
+        message: getFieldValue<HTMLTextAreaElement>(inquiryForm, 'message'),
+      };
 
       if (submitButton) {
         submitButton.disabled = true;
@@ -137,7 +157,7 @@ export default function SiteHooks() {
         for (let attempt = 0; attempt < 2; attempt += 1) {
           try {
             const token = await getCaptchaToken();
-            await verifyCaptchaToken(token);
+            await verifyCaptchaToken(token, inquiryData);
             browserErrorRetry = false;
             break;
           } catch (error) {
@@ -159,20 +179,10 @@ export default function SiteHooks() {
           }
         }
 
-        const subject = encodeURIComponent(`Website Inquiry from ${firstName} ${lastName}`.trim());
-        const body = encodeURIComponent(
-          `Name: ${firstName} ${lastName}\n` +
-            `Email: ${email}\n` +
-            `Phone / Viber: ${phone}\n` +
-            `Legal Matter: ${legalMatter}\n\n` +
-            `${message}`,
-        );
-
         if (inquiryStatus) {
-          inquiryStatus.textContent = 'Verification complete. Opening your email app...';
+          inquiryStatus.textContent = 'Inquiry sent successfully. We will get back to you soon.';
         }
-
-        window.location.href = `mailto:consult@quiapolaw.com?subject=${subject}&body=${body}`;
+        inquiryForm.reset();
       } catch (error) {
         if (inquiryStatus) {
           inquiryStatus.textContent =
