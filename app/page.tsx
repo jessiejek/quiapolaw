@@ -13,7 +13,7 @@ const practiceAreas = [
   {
     num: '02',
     icon: 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z',
-    title: 'Criminal Defense',
+    title: 'Criminal Litigation',
     text: 'Vigorous representation for those facing criminal charges, from inquest to trial and appeals.',
     delay: 'reveal-delay-1',
   },
@@ -411,7 +411,7 @@ export default function Page() {
             <select name="legal_matter" required>
               <option value="">Select a practice area…</option>
               <option>Family Law (Annulment, Custody)</option>
-              <option>Criminal Defense</option>
+              <option>Criminal Litigation</option>
               <option>Corporate Law</option>
               <option>Real Estate Law</option>
               <option>Labor Law</option>
@@ -449,7 +449,7 @@ export default function Page() {
             <div className="footer-col-title">Practice Areas</div>
             <ul>
               <li><a href="#">Family Law</a></li>
-              <li><a href="#">Criminal Defense</a></li>
+              <li><a href="#">Criminal Litigation</a></li>
               <li><a href="#">Corporate Law</a></li>
               <li><a href="#">Real Estate</a></li>
               <li><a href="#">Labor Law</a></li>
