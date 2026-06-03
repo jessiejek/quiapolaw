@@ -180,6 +180,32 @@ export default function Page() {
               <path d="M26 16 Q27 12 40 10 Q53 12 54 16" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
             </svg>
           </div>
+          <div className="hero-center-content">
+            <svg className="hero-scales-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.5)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 3v18M5 6l7-3 7 3M3 10l4 7H3l4-7zM17 10l4 7h-8l4-7z"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+            </svg>
+            <div className="hero-motto">Lex est Rex</div>
+            <div className="hero-motto-sub">The law is king.<br />Justice for every Filipino.</div>
+            <div className="hero-mini-stats">
+              <div className="hero-mini-stat">
+                <div className="hero-mini-num">6</div>
+                <div className="hero-mini-label">Practice areas</div>
+              </div>
+              <div className="hero-mini-stat">
+                <div className="hero-mini-num">IBP</div>
+                <div className="hero-mini-label">Cebu chapter</div>
+              </div>
+              <div className="hero-mini-stat">
+                <div className="hero-mini-num">2024</div>
+                <div className="hero-mini-label">Bar passer</div>
+              </div>
+              <div className="hero-mini-stat">
+                <div className="hero-mini-num">Cebu</div>
+                <div className="hero-mini-label">Based, Visayas</div>
+              </div>
+            </div>
+          </div>
           <div className="hero-right-content">
             <span className="hero-badge">Law Office &amp; Notary Public</span>
             <blockquote className="hero-quote">
