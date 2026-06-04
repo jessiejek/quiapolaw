@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
@@ -32,7 +33,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
         ) : null}
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
